@@ -13,10 +13,23 @@ function getRequirements() {
         specialChar: false,
         passLength: 0
     }
+    var requirementsPrompt = prompt("State your requirements, please separate with commas. (uppercase, lowercase, numbers, special)");
+    var passLengthPrompt = prompt("How long should your password be? (Needs to be between 8 and 128 characters)");
+
+    passLengthPrompt = parseInt(passLengthPrompt);
+    passwordRequirements.passLength = passLengthPrompt;
+    requirementsPrompt = requirementsPrompt.replace(" ", "");
+    requirementsPrompt = requirementsPrompt.toLowerCase();
+
+    var requirementsArray = requirementsPrompt.split(",");
+    passwordRequirements.uppercase = requirementsArray.includes("uppercase");
+    passwordRequirements.lowercase = requirementsArray.includes("lowercase");
+    passwordRequirements.numbers = requirementsArray.includes("numbers");
+    passwordRequirements.specialChar = requirementsArray.includes("special");
+
+    return passwordRequirements;
 }
 
-var requirementsPrompt = prompt("State your requirements, please separate with commas. (uppercase, lowercase, numbers, special)");
-var passLengthPrompt = prompt("How long should your password be? (Needs to be between 8 and 128 characters)");
 
 // Write password to the #password input
 function writePassword() {
