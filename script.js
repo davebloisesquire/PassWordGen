@@ -2,12 +2,42 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
+    console.log("generatePasowrd == go");
     getRequirements();
-    alert("hi")
-    alert(passwordRequirements.uppercase);
+    var reqs = getRequirements.passwordRequirements;
+    var passwordString = passwordString( reqs.passLength, reqs.uppercase, reqs.lowercase, reqs.numbers, reqs.specialChar )
+    alert(passwordString);
+}
+
+function passwordString(passLength, uppercase, lowercase, numbers, special) {
+  console.log("passwordString == go");
+  var generatedPaswordString = "";
+  var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
+  var numberChar = "1234567890";
+  var specialChar = "!@#$%^&*()_+-={}[]:;<>,.?/";
+  var usableChar = ""
+  if (uppercaseChar === true) {
+    usableChar = usableChar + uppercaseChar;
+  }
+  if (lowercaseChar === true) {
+    usableChar = usableChar + lowercaseChar;
+  }
+  if (numberChar === true) {
+    usableChar = usableChar + numberChar;
+  }
+  if (specialChar === true) {
+    usableChar = usableChar + specialChar;
+  }
+
+  for (var i = 0; i < password; i++) {
+    generatedPaswordString += usableChar.charAt(Math.floor(Math.random() * (usableChar.length) ));
+  }
+  return generatedPaswordString;
 }
 
 function getRequirements() {
+  console.log("getRequirements");
     var passwordRequirements = {
         uppercase: false,
         lowercase: false,
@@ -47,9 +77,9 @@ function getRequirements() {
 }
 // Write password to the #password input
 function writePassword() {
+  console.log("writePassword === go");
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
-
     passwordText.value = password;
 
 }
