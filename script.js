@@ -50,7 +50,7 @@ function passwordGenString(passLength, uppercase, lowercase, numbers, special) {
   var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
   var numberChar = "1234567890";
-  var specialChar = "!@#$%^&*_+-=:;<>?/";
+  var specialChar = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
   //Adds character sets, if the requirements are there
   if (uppercase === true) {
