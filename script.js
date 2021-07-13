@@ -15,6 +15,9 @@ function getRequirements() {
     }
 }
 
+var requirementsPrompt = prompt("State your requirements, please separate with commas. (uppercase, lowercase, numbers, special)");
+var passLengthPrompt = prompt("How long should your password be? (Needs to be between 8 and 128 characters)");
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
