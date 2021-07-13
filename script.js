@@ -1,7 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// this sets up the requirements for the generated password
 function getRequirements() {
+  //Sets up an object to hold the requirements
   var passwordRequirements = {
     uppercase: false,
     lowercase: false,
@@ -10,20 +12,20 @@ function getRequirements() {
     passLength: 0
   }
 
-  // grabbing specific requirements
+  // grabbing specific requirements from user
   var requirementsPrompt = prompt("State your requirements, please separate with commas. (uppercase, lowercase, numbers, special)");
-  // grabbing password length
+  // grabbing password length from user
   var passLengthPrompt = prompt("How long should your password be? (Needs to be between 8 and 128 characters)");
 
-  //length input validation
+  //length input validation (make sure that it's a number between 8-128)
   passLengthPrompt = parseInt(passLengthPrompt);
-  if (passLengthPrompt >= 8 && passLengthPrompt <= 128) {
+  if (typeof passLengthPrompt === "number" && passLengthPrompt >= 8 && passLengthPrompt <= 128) {
     passwordRequirements.passLength = passLengthPrompt;
   } else {
     alert("Password length needs to be a number length needs to be between 8-128");
   }
 
-
+  //This formats the requirements into an array
   requirementsPrompt = requirementsPrompt.replace(/\s/g, '');
   requirementsPrompt = requirementsPrompt.toLowerCase();
   console.log(requirementsPrompt);
@@ -40,15 +42,17 @@ function getRequirements() {
   return passwordRequirements;
 }
 
+//This function generates the actual string
 function passwordGenString(passLength, uppercase, lowercase, numbers, special) {
+  //sets up the character sets for the various types of requirements
   var usableChar = "";
   var generatedPasswordString = "";
   var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
   var numberChar = "1234567890";
   var specialChar = "!@#$%^&*_+-=:;<>?/";
-  console.log(uppercase, lowercase, numbers, special);
 
+  //Adds character sets, if the requirements are there
   if (uppercase === true) {
     usableChar = usableChar + uppercaseChar;
   } else {}
@@ -62,6 +66,7 @@ function passwordGenString(passLength, uppercase, lowercase, numbers, special) {
     usableChar = usableChar + specialChar;
   } else {}
 
+  // assigns random characters from the character set based on required password length
   for (var i = 0; i < passLength; i++) {
     generatedPasswordString = generatedPasswordString + usableChar.charAt(Math.floor(Math.random() * (usableChar.length)));
   }
