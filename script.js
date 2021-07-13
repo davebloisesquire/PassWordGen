@@ -36,29 +36,30 @@ function getRequirements() {
 }
 
 function passwordGenString(passLength, uppercase, lowercase, numbers, special) {
+  var usableChar = "";
   var generatedPasswordString = "";
   var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
   var numberChar = "1234567890";
-  var specialChar = "!@#$%^&*()_+-={}[]:;<>,.?/";
-  var usableChar = ""
+  var specialChar = "!@#$%^&*_+-=:;<>?/";
+
   if (uppercase === true) {
     usableChar = usableChar + uppercaseChar;
-  }
+  } else {}
   if (lowercase === true) {
     usableChar = usableChar + lowercaseChar;
-  }
+  } else {}
   if (numbers === true) {
     usableChar = usableChar + numberChar;
-  }
+  } else {}
   if (special === true) {
     usableChar = usableChar + specialChar;
-  }
+  } else {}
 
   for (var i = 0; i < passLength; i++) {
     generatedPasswordString = generatedPasswordString + usableChar.charAt(Math.floor(Math.random() * (usableChar.length)));
   }
-  console.log("passwordGenString " + generatedPasswordString);
+  console.log(usableChar);
   return generatedPasswordString;
 }
 
@@ -67,6 +68,7 @@ function generatePassword() {
   var passwordString = passwordGenString(reqs.passLength, reqs.uppercase, reqs.lowercase, reqs.numbers, reqs.specialChar);
   console.log("generate password");
   console.log(passwordString);
+  return passwordString;
 }
 
 // Write password to the #password input
