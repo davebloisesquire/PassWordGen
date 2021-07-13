@@ -19,18 +19,23 @@ function getRequirements() {
   passLengthPrompt = parseInt(passLengthPrompt);
   if (passLengthPrompt >= 8 && passLengthPrompt <= 128) {
     passwordRequirements.passLength = passLengthPrompt;
-    requirementsPrompt = requirementsPrompt.replace(" ", "");
-    requirementsPrompt = requirementsPrompt.toLowerCase();
   } else {
     alert("Password length needs to be a number length needs to be between 8-128");
   }
 
 
+  requirementsPrompt = requirementsPrompt.replace(/\s/g, '');
+  requirementsPrompt = requirementsPrompt.toLowerCase();
+  console.log(requirementsPrompt);
   var requirementsArray = requirementsPrompt.split(",");
   passwordRequirements.uppercase = requirementsArray.includes("uppercase");
+  console.log(passwordRequirements.uppercase);
   passwordRequirements.lowercase = requirementsArray.includes("lowercase");
+  console.log(passwordRequirements.lowercase);
   passwordRequirements.numbers = requirementsArray.includes("numbers");
+  console.log(passwordRequirements.numbers);
   passwordRequirements.specialChar = requirementsArray.includes("special");
+  console.log(passwordRequirements.special);
 
   return passwordRequirements;
 }
@@ -42,6 +47,7 @@ function passwordGenString(passLength, uppercase, lowercase, numbers, special) {
   var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
   var numberChar = "1234567890";
   var specialChar = "!@#$%^&*_+-=:;<>?/";
+  console.log(uppercase, lowercase, numbers, special);
 
   if (uppercase === true) {
     usableChar = usableChar + uppercaseChar;
