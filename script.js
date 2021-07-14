@@ -27,31 +27,44 @@ function getRequirements() {
     passLength: 0
   }
 
-  // grabbing specific requirements from user
-  var requirementsPrompt = prompt("State your requirements, please separate with commas. (uppercase, lowercase, numbers, special)");
-  // grabbing password length from user
-  var passLengthPrompt = prompt("How long should your password be? (Needs to be between 8 and 128 characters)");
 
-  //length input validation (make sure that it's a number between 8-128)
-  passLengthPrompt = parseInt(passLengthPrompt);
-  if (typeof passLengthPrompt === "number" && passLengthPrompt >= 8 && passLengthPrompt <= 128) {
-    passwordRequirements.passLength = passLengthPrompt;
-  } else {
-    alert("Password length needs to be a number length needs to be between 8-128");
-  }
+  // // grabbing specific requirements from user
+  // var requirementsPrompt = prompt("State your requirements, please separate with commas. (uppercase, lowercase, numbers, special)");
+  // // grabbing password length from user
+  // var passLengthPrompt = prompt("How long should your password be? (Needs to be between 8 and 128 characters)");
+  //
+  // //length input validation (make sure that it's a number between 8-128)
+  // passLengthPrompt = parseInt(passLengthPrompt);
+  // if (typeof passLengthPrompt === "number" && passLengthPrompt >= 8 && passLengthPrompt <= 128) {
+  //   passwordRequirements.passLength = passLengthPrompt;
+  // } else {
+  //   alert("Password length needs to be a number length needs to be between 8-128");
+  // }
+  //
+  // //This formats the requirements into an array
+  // requirementsPrompt = requirementsPrompt.replace(/\s/g, '');
+  // requirementsPrompt = requirementsPrompt.toLowerCase();
+  // console.log(requirementsPrompt);
+  // var requirementsArray = requirementsPrompt.split(",");
+  // passwordRequirements.uppercase = requirementsArray.includes("uppercase");
+  // console.log(passwordRequirements.uppercase);
+  // passwordRequirements.lowercase = requirementsArray.includes("lowercase");
+  // console.log(passwordRequirements.lowercase);
+  // passwordRequirements.numbers = requirementsArray.includes("numbers");
+  // console.log(passwordRequirements.numbers);
+  // passwordRequirements.specialChar = requirementsArray.includes("special");
+  // console.log(passwordRequirements.special);
 
-  //This formats the requirements into an array
-  requirementsPrompt = requirementsPrompt.replace(/\s/g, '');
-  requirementsPrompt = requirementsPrompt.toLowerCase();
-  console.log(requirementsPrompt);
-  var requirementsArray = requirementsPrompt.split(",");
-  passwordRequirements.uppercase = requirementsArray.includes("uppercase");
+
+  passwordRequirements.passLength = document.getElementById("passlength").value
+
+  passwordRequirements.uppercase = document.getElementById("uppercase").checked;
   console.log(passwordRequirements.uppercase);
-  passwordRequirements.lowercase = requirementsArray.includes("lowercase");
+  passwordRequirements.lowercase = document.getElementById("lowercase").checked;
   console.log(passwordRequirements.lowercase);
-  passwordRequirements.numbers = requirementsArray.includes("numbers");
+  passwordRequirements.numbers = document.getElementById("numbers").checked;
   console.log(passwordRequirements.numbers);
-  passwordRequirements.specialChar = requirementsArray.includes("special");
+  passwordRequirements.specialChar = document.getElementById("special").checked;
   console.log(passwordRequirements.special);
 
   return passwordRequirements;
