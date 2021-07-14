@@ -1,5 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
+
+}
+
+function generatePassword() {
+  var reqs = getRequirements();
+  var passwordString = passwordGenString(reqs.passLength, reqs.uppercase, reqs.lowercase, reqs.numbers, reqs.specialChar);
+  console.log("generate password");
+  console.log(passwordString);
+  return passwordString;
+}
 
 // this sets up the requirements for the generated password
 function getRequirements() {
@@ -73,23 +88,6 @@ function passwordGenString(passLength, uppercase, lowercase, numbers, special) {
   console.log(usableChar);
   return generatedPasswordString;
 }
-
-function generatePassword() {
-  var reqs = getRequirements();
-  var passwordString = passwordGenString(reqs.passLength, reqs.uppercase, reqs.lowercase, reqs.numbers, reqs.specialChar);
-  console.log("generate password");
-  console.log(passwordString);
-  return passwordString;
-}
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-
-}
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
