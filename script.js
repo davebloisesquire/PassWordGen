@@ -54,6 +54,13 @@ function getRequirements() {
   passwordRequirements.specialChar = requirementsArray.includes("special");
   console.log(passwordRequirements.special);
 
+  //Validating Requirements check.
+  //If none selected, then generate nothing and alert the user
+  var reqCheck = passwordRequirements.uppercase || passwordRequirements.lowercase || passwordRequirements.numbers || passwordRequirements.special
+  if (!reqCheck) {
+    alert("No requirements selected. Try again")
+  }
+
   return passwordRequirements;
 }
 
